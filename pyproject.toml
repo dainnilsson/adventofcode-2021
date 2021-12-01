@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "aoc-21"
+version = "0.1.0"
+description = "Advent of Code 2021"
+authors = ["Dain Nilsson <dain@yubico.com>"]
+packages = [
+  { include = "aoc21" },
+  { include = "solutions" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.6"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[tool.poetry.scripts]
+aoc = "aoc21.__main__:main"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[flake8]
+max-line-length = 88

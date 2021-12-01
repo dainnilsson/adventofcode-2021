@@ -1,0 +1,37 @@
+== Advent of Code 2021
+Solutions in Python 3.
+
+View output on
+https://github.com/dainnilsson/adventofcode-2021/actions[Github Actions].
+
+
+=== Running
+Run the application:
+
+  python -m aoc21 DAYS [-v|--verbose] [-i|--input FILE]
+
+
+=== Examples
+Run days 1 and 2, with verbose logging:
+
+  python -m aoc21 1 2 --verbose
+
+Run day 1 using a specific input file:
+
+  python -m aoc21 1 -i myfile.txt
+
+
+=== Running tests
+Tests use pytest and can be run with poetry.
+
+Use poetry to set up:
+
+  poetry install
+
+Then run the tests:
+
+  poetry run pytest [-v]
+
+Poetry can also be used to invoke the command line runner:
+
+  poetry run aoc DAYS [-v|--verbose] [-i|--input FILE]
