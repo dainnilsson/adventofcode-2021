@@ -11,8 +11,8 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: 3.10
-    - name: Run Advent of Code 2020
+        python-version: '3.10'
+    - name: Run Advent of Code 2021
       run: python -m aoc21
 
   test:
@@ -23,7 +23,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: 3.10
+        python-version: '3.10'
     - run: |
         python -m pip install poetry
         poetry install
