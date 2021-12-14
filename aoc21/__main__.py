@@ -14,6 +14,8 @@ def solve_part(gen, label):
         print("%s: No solution" % label)
     else:
         ms = (end - start) * 1000
+        if isinstance(answer, str) and "\n" in answer:
+            answer = "\n" + answer
         print("%s (in %d ms): \033[92m%s\033[0m" % (label, ms, answer))
 
 
