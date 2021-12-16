@@ -22,7 +22,7 @@ def solve_part(gen, label):
 def solve_day(day, in_file, log):
     module = importlib.import_module("solutions.day%d" % day)
     with open(in_file, "r") as f:
-        data = f.read()
+        data = f.read().strip()
 
     print("\033[93mDay %d\033[0m" % day)
     solver = module.solve(data, log)
