@@ -15,17 +15,19 @@ def solve(data, log):
     for cave, mx, my in caves():
         t = (mx - 1, my - 1)
         explored = set()
-        visit = [(0, (0, 0))]
+        visit = {0: [(0, 0)]}
         while visit:
-            c, p = visit.pop(0)
-            if p not in explored:
-                nc = c + cave[p]
-                if p == t:
-                    break
-                explored.add(p)
-                x, y = p
-                for dx, dy in ((x + 1, y), (x - 1, y), (x, y - 1), (x, y + 1)):
-                    if (dx, dy) not in explored and 0 <= dx < mx and 0 <= dy < my:
-                        visit.append((nc, (dx, dy)))
-                visit.sort()
-        yield nc - cave[(0, 0)]
+            c = min(visit.keys())
+            for p in visit.pop(c):
+                if p not in explored:
+                    nc = c + cave[p]
+                    if p == t:
+                        visit = {}
+                        yield nc - cave[(0, 0)]
+                        break
+                    explored.add(p)
+                    x, y = p
+                    new = visit.setdefault(nc, [])
+                    for dx, dy in ((x + 1, y), (x - 1, y), (x, y - 1), (x, y + 1)):
+                        if (dx, dy) not in explored and 0 <= dx < mx and 0 <= dy < my:
+                            new.append((dx, dy))
