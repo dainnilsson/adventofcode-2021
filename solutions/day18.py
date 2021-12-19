@@ -1,5 +1,16 @@
 def solve(data, log):
-    lines = [eval(x) for x in data.splitlines()]
+    def parse(cs):
+        c = cs.pop(0)
+        if c == "[":
+            a = parse(cs)
+            cs.pop(0)
+            b = parse(cs)
+            cs.pop(0)
+            return [a, b]
+        else:
+            return int(c)
+
+    lines = [parse(list(x)) for x in data.splitlines()]
 
     def add(val, x, left=True):
         if isinstance(val, int):
@@ -37,8 +48,8 @@ def solve(data, log):
             return [lh, rh], True
         return val, False
 
-    def mag(val):
-        return val if isinstance(val, int) else 3 * mag(val[0]) + 2 * mag(val[1])
+    def mag(v):
+        return v if isinstance(v, int) else 3 * mag(v[0]) + 2 * mag(v[1])
 
     def red(val):
         while True:
